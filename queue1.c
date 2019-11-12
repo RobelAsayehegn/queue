@@ -2,7 +2,7 @@
 typedef struct node
 {
     int data;
-    struct node *link;
+    struct node *next;
 }NODE;
  
 void Insert(int);
@@ -12,16 +12,18 @@ NODE *front,*rear;   /* Global Declarations */
  
 main()
 {
-    /* Main Program */
-    int opn,elem;
+    int choise,elem;
     front=rear=NULL;
     do
     {
-        printf("\n ### Linked List Implementation of QUEUE Operations ### \n\n");
-        printf("\n Press 1-Insert, 2-Delete, 3-Display,4-Exit\n");
-        printf("\n Your option ? ");
-        scanf("%d",&opn);
-        switch(opn)
+        printf("\n###################################################\n");
+        printf("\nenter one to Insert\n");
+		printf("enter two to Delete\n");
+		printf("enter three to display\n");
+		printf("enter four to exit\n");
+        printf("\n###################################################\n");
+        scanf("%d",&choise);
+        switch(choise)
         {
         case 1:
             printf("\n\nRead the Element to be Inserted ?");
@@ -33,17 +35,20 @@ main()
             if(elem != -1)
                 printf(" Deleted Node(From Front)with the Data: %d\n",elem);
             break;
-        case 3: printf("Linked List Implementation of Queue: Status:\n");
+        case 3: 
+			printf("Linked List Implementation of Queue: Status:\n");
             Display(); break;
-        case 4: printf("\n\n Terminating \n\n"); break;
-        default: printf("\n\nInvalid Option !!! Try Again !! \n\n");
+        case 4: 
+			printf("\n\n Terminating \n\n"); break;
+        default: 
+			printf("\n\n insert valid number(1,2,3,4) \n\n");
             break;
         }
         printf("\n\n\n\n  Press a Key to Continue . . . ");
-    }while(opn != 4);
+    }while(choise != 4);
 }
  
-void Insert(int info)
+void Insert(int data1)
 {
     NODE *temp;
     temp=(NODE *)malloc(sizeof(NODE));
@@ -51,11 +56,15 @@ void Insert(int info)
         printf(" Out of Memory !! Overflow !!!");
     else
     {
-        temp->data=info;
-        temp->link=NULL;
-        if(front == NULL) { front = rear = temp; } /* First Node? */
-        else
-        { rear->link=temp; rear = temp; }       /* Insert End */
+        temp->data=data1;
+        temp->next=NULL;
+        if(front == NULL) {
+			front = rear = temp; 
+		} 
+        else{ 
+			rear->next=temp;
+			rear = temp; 
+		} 
         printf(" Node has been inserted at End Successfully !!");
     }
 }
@@ -70,8 +79,8 @@ int Delete()
         t=front;
         info=front->data;
         if(front == rear) rear=NULL;
-        front=front->link;
-        t->link=NULL;
+        front=front->next;
+        t->next=NULL;
         free(t);
         return(info);
     }
@@ -88,7 +97,7 @@ void Display()
         while(t)
         {
             printf("[%d]->",t->data);
-            t=t->link;
+            t=t->next;
         }
         printf("Rear\n");
     }
