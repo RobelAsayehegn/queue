@@ -1,6 +1,6 @@
 #include <stdio.h>
  
-#define MAX 50
+#define MAX 1000
  
 void insert();
 void delete();
@@ -10,50 +10,52 @@ int rear = - 1;
 int front = - 1;
 main()
 {
+	printf("\n enter the number of element max 1000\n");
     int choice;
     while (1)
     {
+    	
+    	printf("\n####################################################\n");
         printf("1.Insert element to queue \n");
         printf("2.Delete element from queue \n");
         printf("3.Display all elements of queue \n");
-        printf("4.Quit \n");
-        printf("Enter your choice : ");
+        printf("4.exit \n");
+        printf("\n####################################################\n");
         scanf("%d", &choice);
         switch (choice)
         {
             case 1:
-            insert();
-            break;
+	            insert();
+	            break;
             case 2:
-            delete();
-            break;
+	            delete();
+	            break;
             case 3:
-            display();
-            break;
+	            display();
+	            break;
             case 4:
-            exit(1);
+            	exit(1);
             default:
-            printf("Wrong choice \n");
-        } /* End of switch */
-    } /* End of while */
-} /* End of main() */
+            	printf("Wrong choice \n");
+        }
+    }
+}
  
 void insert()
 {
     int add_item;
     if (rear == MAX - 1)
-    printf("Queue Overflow \n");
+    	printf("Queue Overflow \n");
     else
     {
         if (front == - 1)
-        /*If queue is initially empty */
-        front = 0;
+            front = 0;
         printf("Inset the element in queue : ");
         scanf("%d", &add_item);
         rear = rear + 1;
         queue_array[rear] = add_item;
     }
-} /* End of insert() */
+}
  
 void delete()
 {
@@ -67,7 +69,7 @@ void delete()
         printf("Element deleted from queue is : %d\n", queue_array[front]);
         front = front + 1;
     }
-} /* End of delete() */
+} 
  
 void display()
 {
