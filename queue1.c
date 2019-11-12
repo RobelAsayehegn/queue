@@ -36,8 +36,9 @@ main()
                 printf(" Deleted Node(From Front)with the Data: %d\n",elem);
             break;
         case 3: 
-			printf("Linked List Implementation of Queue: Status:\n");
-            Display(); break;
+		printf("Linked List Implementation of Queue: Status:\n");
+        	Display(); 
+		break;
         case 4: 
 			printf("\n\n Terminating \n\n"); break;
         default: 
